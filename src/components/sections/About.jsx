@@ -3,12 +3,12 @@ import profileImage from '../../assets/images/profile.png';
 
 const About = () => {
   return (
-    <section id="about" className="about-section py-2 py-md-5 position-relative">
+    <section id="about" className="about-section py-1 py-md-5 position-relative">
       {/* Background Pattern */}
       <div className="about-bg-pattern"></div>
       
       <div className="container position-relative">
-        <div className="text-center mb-2 mb-md-5">
+        <div className="text-center mb-1 mb-md-5">
           <h2 className="display-4 fw-bold mb-1 mb-md-3">
             About <span className="hero-accent">Me</span>
           </h2>
@@ -17,7 +17,7 @@ const About = () => {
         </div>
         
         <div className="row align-items-center">
-          <div className="col-lg-2 col-md-4 mb-1 mb-lg-0">
+          <div className="col-lg-2 col-md-4 mb-0 mb-lg-0">
             <div className="profile-image-wrapper">
               <div className="profile-image-bg"></div>
               <img 
