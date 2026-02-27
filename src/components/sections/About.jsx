@@ -17,7 +17,7 @@ const About = () => {
         </div>
         
         <div className="row align-items-center">
-          <div className="col-lg-4 mb-4 mb-lg-0">
+          <div className="col-lg-4 mb-2 mb-lg-0">
             <div className="profile-image-wrapper">
               <div className="profile-image-bg"></div>
               <img 
