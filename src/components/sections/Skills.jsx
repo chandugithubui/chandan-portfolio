@@ -18,6 +18,7 @@ const skillsData = {
   tools: [
     { name: 'Git', icon: '🔧', color: '#F05032', gradient: 'linear-gradient(135deg, #F05032 0%, #FF6B6B 100%)' },
     { name: 'GitHub', icon: '🐙', color: '#181717', gradient: 'linear-gradient(135deg, #181717 0%, #333333 100%)' },
+    { name: 'Postman', icon: '📮', color: '#FF6C37', gradient: 'linear-gradient(135deg, #FF6C37 0%, #FF8C42 100%)' },
     { name: 'Vercel', icon: '▲', color: '#000000', gradient: 'linear-gradient(135deg, #000000 0%, #FFFFFF 100%)' },
     { name: 'Render', icon: '☁️', color: '#46E3B7', gradient: 'linear-gradient(135deg, #46E3B7 0%, #00D9FF 100%)' },
   ]
