@@ -639,23 +639,49 @@ button:focus-visible {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .hero-section {
+    padding-top: 2rem;
+  }
+  
   .hero-title {
     font-size: 2.5rem;
   }
   
+  .hero-content {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    margin-top: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .hero-image-wrapper {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
   .hero-image {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
   }
   
   .hero-image-bg {
-    width: 300px;
-    height: 300px;
+    width: 240px;
+    height: 240px;
   }
   
   .hero-image-border {
-    width: 270px;
-    height: 270px;
+    width: 220px;
+    height: 220px;
   }
 }
 
