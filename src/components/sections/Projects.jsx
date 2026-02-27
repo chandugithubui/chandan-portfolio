@@ -142,7 +142,7 @@ const Projects = () => {
                     ))}
                   </div>
                   
-                  <div className="project-buttons">
+                  <div className="project-buttons d-flex gap-2">
                     <a 
                       href={project.githubUrl} 
                       className="project-btn github-btn"
