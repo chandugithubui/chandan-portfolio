@@ -1829,7 +1829,23 @@ button:focus-visible {
 /* Responsive for About */
 @media (max-width: 768px) {
   .about-section {
-    padding: 3rem 0;
+    padding: 2rem 0 !important;
+  }
+  
+  .about-section .text-center {
+    margin-bottom: 2rem !important;
+  }
+  
+  .about-section .display-4 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .about-section .lead {
+    margin-bottom: 1rem !important;
+  }
+  
+  .about-section .row {
+    margin-bottom: 0 !important;
   }
   
   .profile-image-bg {
@@ -1848,18 +1864,26 @@ button:focus-visible {
   }
   
   .profile-image-wrapper {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem !important;
   }
   
   .about-content {
     padding-left: 0;
-    margin-top: 1rem;
+    margin-top: 0.5rem !important;
+  }
+  
+  .about-description {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .strengths-title {
+    margin-bottom: 1rem !important;
   }
   
   .strengths-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem !important;
   }
   
   .strength-item {
