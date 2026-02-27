@@ -1828,6 +1828,10 @@ button:focus-visible {
 
 /* Responsive for About */
 @media (max-width: 768px) {
+  .about-section {
+    padding: 3rem 0;
+  }
+  
   .profile-image-bg {
     width: 200px;
     height: 200px;
@@ -1843,14 +1847,19 @@ button:focus-visible {
     height: 170px;
   }
   
+  .profile-image-wrapper {
+    margin-bottom: 1rem;
+  }
+  
   .about-content {
     padding-left: 0;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   
   .strengths-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin-top: 1.5rem;
   }
   
   .strength-item {
