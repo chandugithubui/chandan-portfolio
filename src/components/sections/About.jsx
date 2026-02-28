@@ -17,7 +17,7 @@ const About = () => {
         </div>
         
         <div className="row align-items-center">
-          <div className="col-lg-2 col-md-4 mb-0 mb-lg-0 pe-0 pe-lg-2">
+          <div className="col-lg-2 col-md-4 mb-0 mb-lg-0 pe-0 pe-lg-1">
             <div className="profile-image-wrapper">
               <div className="profile-image-bg"></div>
               <img 
@@ -29,7 +29,7 @@ const About = () => {
             </div>
           </div>
           
-          <div className="col-lg-10 col-md-8 ps-2 ps-md-3">
+          <div className="col-lg-10 col-md-8 ps-2 ps-md-3 ps-lg-2">
             <div className="about-content">
               <p className="about-description mb-2 mb-md-4">
                 I'm a passionate Full Stack Developer with expertise in modern web technologies. I love building scalable applications and solving complex problems through clean, efficient code. My journey in web development has been driven by curiosity and a desire to create impactful digital solutions.
