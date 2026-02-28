@@ -100,7 +100,7 @@ const Navbar = () => {
                 Resume
               </button>
             </li>
-            <li className="nav-item ms-3 ms-md-4">
+            <li className="nav-item ms-4 ms-md-5">
               <button 
                 className="nav-link theme-toggle-btn"
                 onClick={toggleTheme}
