@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect, useRef } from 'react';
 import SectionHeader from '../ui/SectionHeader';
 
 const pillars = [
@@ -25,55 +26,99 @@ const pillars = [
 ];
 
 const About = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add('is-visible');
+          observer.unobserve(section);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="about-section">
-      <SectionHeader
-        badge="About Chandan"
-        icon="bi-person-badge"
-        title="Crafting Scalable Frontends with"
-        highlight="Precision & Purpose"
-        subtitle="A dedicated React.js Developer focused on building clean, high-performance web applications."
-      />
+    <section
+      id="about"
+      className="about-section"
+      ref={sectionRef}
+    >
+      <div className="about-container">
+        <SectionHeader
+          badge="About Chandan"
+          icon="bi-person-badge"
+          title="Crafting Scalable Frontends with"
+          highlight="Precision & Purpose"
+          subtitle="A dedicated React.js Developer focused on building clean, high-performance web applications."
+        />
 
-      <div className="about-grid">
-        {/* Left Column: Dark-background portrait */}
-        <div className="about-portrait-card">
-          <img
-            src="/assets/images/chandan-about.jpg"
-            alt="Chandan Narayan Sahoo"
-            className="about-image"
-            loading="lazy"
-            onError={(e) => {
-              e.currentTarget.src = '/assets/images/chandan-about.png';
-            }}
-          />
-        </div>
+        <div className="about-grid">
 
-        {/* Right Column: Bio & Engineering Pillars */}
-        <div className="about-story">
-          <h3 className="about-lead">
-            Bridging technical design and performant code to build engaging user experiences.
-          </h3>
-
-          <p className="about-paragraph">
-            I am a React.js Frontend Developer with 2+ years of professional web development experience based in Hyderabad, India. My passion lies in transforming product designs and complex logic into responsive, lightning-fast digital solutions.
-          </p>
-
-          <p className="about-paragraph">
-            Throughout my work at Abhyaas Edu Technologies and on extensive full-stack applications like Handicraft Hub, I have built component libraries from scratch, integrated asynchronous REST endpoints, and debugged edge-case rendering issues across multiple production websites.
-          </p>
-
-          <div className="about-pillars-grid">
-            {pillars.map((pillar) => (
-              <div key={pillar.title} className="pillar-card">
-                <div className="pillar-icon-box">
-                  <i className={`bi ${pillar.icon}`} aria-hidden="true"></i>
-                </div>
-                <h4 className="pillar-title">{pillar.title}</h4>
-                <p className="pillar-desc">{pillar.desc}</p>
-              </div>
-            ))}
+          <div className="about-portrait-col">
+            <div className="about-portrait-card">
+              <img
+                src="/assets/images/chandan-about.jpg"
+                alt="Chandan Narayan Sahoo"
+                className="about-image"
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.src = '/assets/images/chandan-about.png';
+                }}
+              />
+              <div className="about-image-glow"></div>
+            </div>
           </div>
+
+          <div className="about-story">
+            <h3 className="about-lead">
+              Bridging technical design and performant code to build engaging user experiences.
+            </h3>
+
+            <p className="about-paragraph">
+              I am a React.js Frontend Developer with 2+ years of professional web development experience based in Hyderabad, India. My passion lies in transforming product designs and complex logic into responsive, lightning-fast digital solutions.
+            </p>
+
+            <p className="about-paragraph">
+              Through projects like Handicraft Hub, I've developed reusable React components, integrated REST APIs, implemented authentication workflows, and worked with backend services to build complete, scalable web applications.
+            </p>
+
+            <div className="about-pillars-grid">
+              {pillars.map((pillar, index) => (
+                <div
+                  key={pillar.title}
+                  className="pillar-card"
+                  style={{ '--card-index': index }}
+                >
+                  <div className="pillar-icon-box">
+                    <i
+                      className={`bi ${pillar.icon}`}
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+
+                  <h4 className="pillar-title">
+                    {pillar.title}
+                  </h4>
+
+                  <p className="pillar-desc">
+                    {pillar.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
