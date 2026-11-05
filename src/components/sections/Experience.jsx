@@ -1,83 +1,72 @@
 import React from 'react';
-
-const experiences = [
-  {
-    id: 1,
-    title: 'Full Stack Web Developer',
-    company: 'Abhyaas Edu Technologies Pvt Ltd.',
-    duration: 'Mar 2025 - Present',
-    points: [
-      'Developed and maintained full-stack web applications using React and Node.js',
-      'Implemented RESTful APIs and integrated third-party services',
-      'Collaborated with cross-functional teams to deliver high-quality software solutions'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Web Developer Intern',
-    company: 'Abhyaas Edu Technologies Pvt Ltd.',
-    duration: 'Aug 2024 - Feb 2025',
-    points: [
-      'Built responsive and interactive user interfaces using React and modern CSS',
-      'Optimized application performance and improved user experience',
-      'Worked closely with UX designers to implement pixel-perfect designs'
-    ]
-  }
-];
+import SectionHeader from '../ui/SectionHeader';
+import { experiences } from '../../data/experience';
 
 const Experience = () => {
   return (
-    <section id="experience" className="experience-section py-5 position-relative">
-      {/* Background Pattern */}
-      <div className="experience-bg-pattern"></div>
-      
-      <div className="container position-relative">
-        <div className="text-center mb-5">
-          <h2 className="display-4 fw-bold mb-3">
-            My <span className="hero-accent">Experience</span>
-          </h2>
-          <div className="divider mx-auto"></div>
-          <p className="lead fw-bold text-white">Professional journey and growth</p>
-        </div>
-        
-        <div className="row justify-content-center">
-          <div className="col-lg-10">
-            <div className="timeline-modern">
-              {experiences.map((exp, index) => (
-                <div key={exp.id} className="timeline-item-modern">
-                  <div className="timeline-dot-wrapper">
-                    <div className="timeline-dot"></div>
-                    <div className="timeline-line"></div>
-                  </div>
-                  <div className="timeline-content-modern">
-                    <div className="experience-card">
-                      <div className="experience-header">
-                        <div className="experience-info">
-                          <h5 className="experience-title">{exp.title}</h5>
-                          <h6 className="experience-company">{exp.company}</h6>
-                        </div>
-                        <div className="experience-duration">
-                          <span className="duration-badge">{exp.duration}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="experience-points">
-                        {exp.points.map((point, pointIndex) => (
-                          <div key={pointIndex} className="experience-point">
-                            <div className="point-icon-wrapper">
-                              <i className="bi bi-check-circle-fill point-icon"></i>
-                            </div>
-                            <span className="point-text">{point}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+    <section id="experience" className="experience-section">
+      <SectionHeader
+        badge="Career Journey"
+        icon="bi-briefcase-fill"
+        title="Professional"
+        highlight="Experience"
+        subtitle="Verified work history delivering production-grade frontend solutions in an agile engineering team."
+      />
+
+      <div className="experience-timeline-container">
+        {/* Vertical Spine */}
+        <div className="timeline-spine"></div>
+
+        {experiences.map((exp) => (
+          <div key={exp.id} className="timeline-entry">
+            {/* Timeline Beacon Point */}
+            <div className="timeline-beacon">
+              <div className="beacon-core"></div>
+            </div>
+
+            {/* Timeline Content Card */}
+            <div className="timeline-card">
+              <div className="timeline-header">
+                <div>
+                  <h3 className="timeline-role">{exp.role}</h3>
+                  <div className="timeline-company">
+                    <i className="bi bi-building"></i>
+                    <span>{exp.company}</span>
+                    <span style={{ color: 'var(--text-muted)' }}>• {exp.location}</span>
                   </div>
                 </div>
-              ))}
+
+                <div className="timeline-badge-group">
+                  <span className="timeline-period-pill">
+                    <i className="bi bi-calendar3 me-1"></i>
+                    {exp.period}
+                  </span>
+                  <span className="timeline-status-pill">{exp.badge}</span>
+                </div>
+              </div>
+
+              <p className="timeline-summary">{exp.description}</p>
+
+              <ul className="timeline-bullet-list">
+                {exp.highlights.map((point, idx) => (
+                  <li key={idx} className="timeline-bullet-item">
+                    <i className="bi bi-check2-circle timeline-bullet-icon"></i>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Technologies Tag Cloud */}
+              <div className="timeline-tag-cloud">
+                {exp.technologies.map((tech) => (
+                  <span key={tech} className="tech-tag-chip">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );

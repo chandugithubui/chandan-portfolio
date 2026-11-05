@@ -1,122 +1,175 @@
 import React, { useState, useEffect } from 'react';
 
+const navItems = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' }
+];
+
 const Navbar = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDarkTheme(savedTheme === 'dark');
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      // Active section detection
+      const sections = [
+        { id: 'home', navId: 'home' },
+        { id: 'about', navId: 'about' },
+        { id: 'experience', navId: 'experience' },
+        { id: 'skills', navId: 'skills' },
+        { id: 'handicraft-hub', navId: 'projects' },
+        { id: 'projects', navId: 'projects' },
+        { id: 'contact', navId: 'contact' }
+      ];
+      
+      const scrollPosition = window.scrollY + 140;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i].id);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i].navId);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
+  // Lock body scroll when mobile menu is open & close on resize past 768px
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
 
-  const closeNav = () => {
-    setIsNavOpen(false);
-  };
+    const handleResize = () => {
+      if (window.innerWidth > 768 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
 
-  const toggleTheme = () => {
-    const newTheme = !isDarkTheme ? 'dark' : 'light';
-    setIsDarkTheme(!isDarkTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [mobileMenuOpen]);
 
-  const downloadResume = () => {
-    // Force download using public folder (React best practice)
-    const link = document.createElement('a');
-    link.href = '/ChandanSahoo.pdf';
-    link.download = 'ChandanSahoo.pdf';
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    // Force download by creating a temporary link and clicking it
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <a className="navbar-brand fw-bold" href="#home">
-          Chandan
-        </a>
-        
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded={isNavOpen}
-          aria-label="Toggle navigation"
-          onClick={toggleNav}
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''}`} id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="#home" onClick={closeNav}>
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#about" onClick={closeNav}>
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#skills" onClick={closeNav}>
-                Skills
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#projects" onClick={closeNav}>
-                Projects
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contact" onClick={closeNav}>
-                Contact
-              </a>
-            </li>
-            <li className="nav-item">
-              <button 
-                className="nav-link resume-btn"
-                onClick={downloadResume}
-                aria-label="Download Resume"
+    <>
+      <header className={`cinematic-nav ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
+          {/* Brand Logo */}
+          <a href="#home" className="nav-brand" aria-label="Chandan Narayan Sahoo Home" onClick={closeMobileMenu}>
+            <span className="nav-brand-emblem">CS</span>
+            <span className="nav-brand-text">
+              Chandan<span className="text-gradient">.dev</span>
+            </span>
+          </a>
+
+          {/* Desktop Nav Items */}
+          <nav aria-label="Primary Navigation">
+            <ul className="nav-links">
+              {navItems.map((item) => {
+                const sectionId = item.href.replace('#', '');
+                const isActive = activeSection === sectionId;
+                return (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className={`nav-link-item ${isActive ? 'active' : ''}`}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Action Button: Download Resume */}
+          <div className="nav-actions">
+            <a
+              href="/assets/resume/Chandan_Sahoo_Resume.pdf"
+              download="Chandan_Sahoo_Resume.pdf"
+              className="btn-resume"
+              aria-label="Download Chandan Sahoo Resume"
+            >
+              <i className="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
+              <span>Resume</span>
+            </a>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              className="mobile-nav-toggle"
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              aria-expanded={mobileMenuOpen}
+            >
+              <i className={`bi ${mobileMenuOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Drawer Backdrop */}
+      {mobileMenuOpen && (
+        <div
+          className="mobile-nav-backdrop open"
+          onClick={closeMobileMenu}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Drawer */}
+      <div className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`} role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+        <div className="mobile-drawer-inner">
+          {navItems.map((item) => {
+            const sectionId = item.href.replace('#', '');
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`nav-link-item ${isActive ? 'active' : ''}`}
+                onClick={closeMobileMenu}
               >
-                <i className="bi bi-download me-2"></i>
-                Resume
-              </button>
-            </li>
-            <li className="nav-item ms-auto ms-md-5">
-              <button 
-                className="nav-link theme-toggle-btn"
-                onClick={toggleTheme}
-                aria-label="Toggle Theme"
-              >
-                {isDarkTheme ? (
-                  <i className="bi bi-sun-fill"></i>
-                ) : (
-                  <i className="bi bi-moon-fill"></i>
-                )}
-              </button>
-            </li>
-          </ul>
+                <span>{item.label}</span>
+                <i className="bi bi-chevron-right" style={{ fontSize: '0.85rem' }}></i>
+              </a>
+            );
+          })}
+          <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--card-border)' }}>
+            <a
+              href="/assets/resume/Chandan_Sahoo_Resume.pdf"
+              download="Chandan_Sahoo_Resume.pdf"
+              className="btn-resume"
+              style={{ width: '100%', justifyContent: 'center', minHeight: '46px' }}
+              onClick={closeMobileMenu}
+            >
+              <i className="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
+              <span>Download Resume (PDF)</span>
+            </a>
+          </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 

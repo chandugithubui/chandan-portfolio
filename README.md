@@ -1,16 +1,70 @@
-# React + Vite
+# Chandan Narayan Sahoo – Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal developer portfolio for **Chandan Narayan Sahoo** – React.js Frontend Developer with 2+ years of web development experience, specializing in React.js, JavaScript (ES6+), and the MERN stack.
 
-Currently, two official plugins are available:
+- **Live URL**: [chandan-portfolio-coral.vercel.app](https://chandan-portfolio-coral.vercel.app/)
+- **Location**: Hyderabad, India
+- **Email**: [chandan881677@gmail.com](mailto:chandan881677@gmail.com)
+- **LinkedIn**: [linkedin.com/in/chandansahoo7978](https://www.linkedin.com/in/chandansahoo7978/)
+- **GitHub**: [github.com/chandugithubui](https://github.com/chandugithubui)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Architecture & Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Core**: React 19, Vite 7, JavaScript (ES6+)
+- **Styling & Design System**: Custom Dark Cinematic CSS Design Tokens, Bootstrap 5, Bootstrap Icons
+- **Typography**: Space Grotesk & Plus Jakarta Sans (Google Fonts)
+- **Visuals & 3D**: Native HTML5 Canvas 3D particle constellation with mouse parallax and depth perspective
+- **Architecture**: Modular component architecture, custom data separation (`src/data/`), lazy loaded assets
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Sections
+
+1. **Hero**: Prominent identity, professional titles, status indicators, navy blazer photograph, 3D particle canvas, quick stats, resume download, and social profiles.
+2. **About Me**: Dark-background photograph, engineering philosophy, and 4 core technical pillars (Component Architecture, Responsive UI, REST API Integration, MERN Stack).
+3. **Professional Experience**: Elegant animated career timeline documenting verified experience at Abhyaas Edu Technologies Private Limited.
+4. **Technical Expertise**: Interactive categorized skill matrix covering Frontend, React Ecosystem, UI/Styling, Backend, Database, and DevOps/Tools.
+5. **Featured Flagship Project (Handicraft Hub)**: Interactive browser case study with 6 high-resolution screenshots, view switcher, architectural metrics, deep-dive features, and live/GitHub links.
+6. **Other Projects**: Genuine projects (Event Tracking System with Redis Queue, Modern Task Management App) with code highlights and repositories.
+7. **Contact**: "Have an Idea? Let's Build Something Great", one-click copy email button, direct telephone link, social channels, and quick pre-filled email composer.
+8. **Footer**: Clean copyright, developer identity, and smooth scroll-to-top button.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or pnpm
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/chandugithubui/chandan-portfolio.git
+
+# Navigate to project directory
+cd chandan-portfolio
+
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+```
+
+### Production Build & Linting
+
+```bash
+# Run ESLint check
+npm run lint
+
+# Build production bundle
+npm run build
+
+# Preview production build locally
+npm run preview
+```
