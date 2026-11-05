@@ -117,8 +117,8 @@ const Hero = () => {
               </a>
 
               <a
-                href="/assets/resume/Chandan_Sahoo_Resume.pdf"
-                download="Chandan_Sahoo_Resume.pdf"
+                href="/assets/resume/Chandan_Sahoo_React_Frontend_Developer.pdf"
+                download="Chandan_Sahoo_React_Frontend_Developer.pdf"
                 className="btn-hero-secondary"
               >
                 <i className="bi bi-download"></i>

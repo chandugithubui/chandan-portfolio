@@ -140,8 +140,8 @@ const Contact = () => {
               {/* Resume Download Action */}
               <div style={{ marginTop: '2.5rem' }}>
                 <a
-                  href="/assets/resume/Chandan_Sahoo_Resume.pdf"
-                  download="Chandan_Sahoo_Resume.pdf"
+                  href="/assets/resume/Chandan_Sahoo_React_Frontend_Developer.pdf"
+                  download="Chandan_Sahoo_React_Frontend_Developer.pdf"
                   className="btn-secondary-cinematic"
                   style={{ width: '100%', justifyContent: 'center' }}
                 >

@@ -105,8 +105,8 @@ const Navbar = () => {
           {/* Action Button: Download Resume */}
           <div className="nav-actions">
             <a
-              href="/assets/resume/Chandan_Sahoo_Resume.pdf"
-              download="Chandan_Sahoo_Resume.pdf"
+              href="/assets/resume/Chandan_Sahoo_React_Frontend_Developer.pdf"
+              download="Chandan_Sahoo_React_Frontend_Developer.pdf"
               className="btn-resume"
               aria-label="Download Chandan Sahoo Resume"
             >
@@ -157,8 +157,8 @@ const Navbar = () => {
           })}
           <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--card-border)' }}>
             <a
-              href="/assets/resume/Chandan_Sahoo_Resume.pdf"
-              download="Chandan_Sahoo_Resume.pdf"
+              href="/assets/resume/Chandan_Sahoo_React_Frontend_Developer.pdf"
+              download="Chandan_Sahoo_React_Frontend_Developer.pdf"
               className="btn-resume"
               style={{ width: '100%', justifyContent: 'center', minHeight: '46px' }}
               onClick={closeMobileMenu}
