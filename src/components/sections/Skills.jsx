@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SectionHeader from '../ui/SectionHeader';
 import { skillCategories } from '../../data/skills';
+import { FaReact } from 'react-icons/fa';
 
 const Skills = () => {
   const [activeCategoryId, setActiveCategoryId] = useState('all');
@@ -69,7 +70,11 @@ const Skills = () => {
                     <div>
                       <div className="skill-card-top">
                         <div className="skill-icon-gem">
-                          <i className={`bi ${skill.icon}`}></i>
+                          {skill.name === 'React.js' ? (
+                            <FaReact className="react-skill-icon" />
+                          ) : (
+                            <i className={`bi ${skill.icon}`}></i>
+                          )}
                         </div>
                         <span className="skill-level-badge">{skill.level}</span>
                       </div>
